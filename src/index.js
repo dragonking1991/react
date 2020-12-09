@@ -2,10 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './app/App';
+import Exp from './exp/Exp';
 import * as serviceWorker from './serviceWorker';
 
 
-const currencyCategory = {
+const currencytype = {
   v: 'vnd',
   u: 'usd'
 };
@@ -45,11 +46,11 @@ class InputCurrency extends React.Component {
 
   render() {
     const currency = this.props.currency;
-    const category = this.props.category;
+    const type = this.props.type;
     return (
       <fieldset>
         <legend onClick={this.clickHandle}>
-          Enter currency in {currencyCategory[category]}:
+          Enter currency in {currencytype[type]}:
         </legend>
         <input value={currency} onChange={this.handleChange} />
       </fieldset>
@@ -62,26 +63,26 @@ class Calculator extends React.Component {
     super(props);
     this.changeToUsd = this.changeToUsd.bind(this);
     this.changeToVnd = this.changeToVnd.bind(this);
-    this.state = { category: 'v', currency: '' };
+    this.state = { type: 'v', currency: '' };
   }
 
   changeToUsd(currency) {
-    this.setState({ category: 'u', currency });
+    this.setState({ type: 'u', currency });
   }
   changeToVnd(currency) {
-    this.setState({ category: 'v', currency });
+    this.setState({ type: 'v', currency });
   }
 
   render() {
-    const category = this.state.category;
+    const type = this.state.type;
     const currency = this.state.currency;
 
-    const vnd = category === 'u' ? convertValue(currency, toVnd) : currency;
-    const usd = category === 'v' ? convertValue(currency, toUsd) : currency;
+    const vnd = type === 'u' ? convertValue(currency, toVnd) : currency;
+    const usd = type === 'v' ? convertValue(currency, toUsd) : currency;
     return (
       <div>
-        <InputCurrency category='v' onInputChange={this.changeToVnd} currency={vnd} />
-        <InputCurrency category='u' onInputChange={this.changeToUsd} currency={usd} />
+        <InputCurrency type='v' onInputChange={this.changeToVnd} currency={vnd} />
+        <InputCurrency type='u' onInputChange={this.changeToUsd} currency={usd} />
       </div>
     )
   }
@@ -92,6 +93,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Calculator />
     <App />
+    <Exp />
   </React.StrictMode>,
   document.getElementById('root')
 );
