@@ -111,7 +111,6 @@ class Mock extends React.Component {
     super(props)
     this.filterText = this.filterText.bind(this)
     this.filterAvailable = this.filterAvailable.bind(this)
-    this.originData = this.props.data
     this.state = { textSearch: '', available: false }
   }
 
