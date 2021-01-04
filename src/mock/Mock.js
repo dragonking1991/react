@@ -60,8 +60,22 @@ class List extends React.Component {
   render() {
     const rowItems = []
     let lastCategory = null
+    this.filterData = []
 
     this.props.data.forEach(data => {
+      if (data.name.toLowerCase().indexOf(this.props.filterText.toLowerCase()) >= 0) {
+        if (this.props.available) {
+          if (data.stocked) {
+            this.filterData.push(data)
+          }
+        }
+        else {
+          this.filterData.push(data)
+        }
+      }
+    })
+
+    this.filterData.forEach(data => {
       if (data.category !== lastCategory) {
         rowItems.push(
           <TitleList
@@ -97,59 +111,23 @@ class Mock extends React.Component {
     super(props)
     this.filterText = this.filterText.bind(this)
     this.filterAvailable = this.filterAvailable.bind(this)
-    this.filterData = []
-    this.state = { dataFilter: this.props.data, available: false }
+    this.originData = this.props.data
+    this.state = { textSearch: '', available: false }
   }
 
   filterText(value) {
-    this.filterData = []
-    this.props.data.forEach(data => {
-      if (data.name.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
-        if (this.state.available) {
-          if (data.stocked) {
-            this.filterData.push(data)
-          }
-        }
-        else {
-          this.filterData.push(data)
-        }
-      }
-    })
-    this.setState({ dataFilter: this.filterData })
+    this.setState({ textSearch: value })
   }
 
   filterAvailable(value) {
-    this.filterData = []
-    this.state.dataFilter.forEach(data => {
-      if (value.checked) {
-        if (data.stocked) {
-          this.filterData.push(data)
-        }
-      }
-      else {
-        this.props.data.forEach(data => {
-          if (data.name.toLowerCase().indexOf(value && value.toLowerCase()) >= 0) {
-            if (this.state.available) {
-              if (data.stocked) {
-                this.filterData.push(data)
-              }
-            }
-            else {
-              this.filterData.push(data)
-            }
-          }
-        })
-      }
-    })
-    console.log(value.checked, this.filterData)
-    this.setState({ dataFilter: this.filterData, available: value.checked })
+    this.setState({ available: value.checked })
   }
 
   render() {
     return (
       <div>
         <FormCtrl onInputChange={this.filterText} onCheckboxChange={this.filterAvailable} />
-        <List data={this.state.dataFilter} />
+        <List data={this.props.data} filterText={this.state.textSearch} available={this.state.available} />
       </div>
     )
   }
