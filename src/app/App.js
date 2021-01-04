@@ -1,34 +1,53 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
+const App = () => {
+  const [date,setDate] = useState(new Date())
 
-class App extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {date:new Date()}
-  }
-
-  setDate() {
-    this.setState({date:new Date()})
-  }
-
-  componentDidMount(){
-    this.time = setInterval(() => {
-      this.setDate()
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setDate(new Date())
     }, 1000)
-  }
+    return () => {
+      clearInterval(timer)
+    }
+  })
 
-  componentWillUnmount(){
-    clearInterval(this.time)
-  }
-
-  render(){
-    return (
-      <p>
-        {this.state.date.toLocaleTimeString()}
-      </p>
-    )
-  }
+  return (
+    <p>
+      {date.toLocaleTimeString()}
+    </p>
+  )
 }
+
+
+// class App extends React.Component {
+//   constructor(props){
+//     super(props);
+//     this.state = {date:new Date()}
+//   }
+
+//   setDate() {
+//     this.setState({date:new Date()})
+//   }
+
+//   componentDidMount(){
+//     this.time = setInterval(() => {
+//       this.setDate()
+//     }, 1000)
+//   }
+
+//   componentWillUnmount(){
+//     clearInterval(this.time)
+//   }
+
+//   render(){
+//     return (
+//       <p>
+//         {this.state.date.toLocaleTimeString()}
+//       </p>
+//     )
+//   }
+// }
 
 export default App;

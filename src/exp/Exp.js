@@ -1,6 +1,22 @@
 import React from 'react';
 import './Exp.css';
 
+// const Exp = () => {
+//   const [valueInput, setValue] = useState('thanh')
+
+  
+//   handleChange = e => {
+//     valueInput = e.target.value
+//   }
+//   return (
+//     <div>
+//       <input value={valueInput} onChange={() => { handlechange}} />
+//       <p>
+//         Hello {valueInput}!
+//         </p>
+//     </div>
+//   )
+// }
 
 class Exp extends React.Component {
   constructor(props){
