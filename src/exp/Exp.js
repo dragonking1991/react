@@ -18,7 +18,7 @@ class Exp extends React.Component {
       <div>
         <input value={this.valueInput} onChange={this.handleChange} />
         <p>
-          {this.state.valueInput}
+          Hello {this.state.valueInput}!
         </p>
       </div>
     )
