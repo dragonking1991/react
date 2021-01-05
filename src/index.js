@@ -4,6 +4,7 @@ import './index.css';
 import App from './app/App';
 import Exp from './exp/Exp';
 import Mock from './mock/Mock';
+import Router from './router/Router';
 import * as serviceWorker from './serviceWorker';
 
 const currencytype = {
@@ -99,6 +100,8 @@ class Calculator extends React.Component {
 
 ReactDOM.render(
   <React.StrictMode>
+    -----------------------------------------------------------------------------
+    <Router />
     -----------------------------------------------------------------------------
     <Mock data={DATAS} />
     -----------------------------------------------------------------------------
