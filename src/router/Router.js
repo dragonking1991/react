@@ -45,13 +45,13 @@ export default function AuthExample() {
 
 const fakeAuth = {
   isAuthenticated: false,
-  signin(cb) {
+  signin(callback) {
     fakeAuth.isAuthenticated = true;
-    setTimeout(cb, 100); // fake async
+    setTimeout(callback, 100); // fake async
   },
-  signout(cb) {
+  signout(callback) {
     fakeAuth.isAuthenticated = false;
-    setTimeout(cb, 100);
+    setTimeout(callback, 100);
   }
 };
 
@@ -73,17 +73,17 @@ function useAuth() {
 function useProvideAuth() {
   const [user, setUser] = useState(null);
 
-  const signin = cb => {
+  const signin = callback => {
     return fakeAuth.signin(() => {
       setUser("user");
-      cb();
+      callback();
     });
   };
 
-  const signout = cb => {
+  const signout = callback => {
     return fakeAuth.signout(() => {
       setUser(null);
-      cb();
+      callback();
     });
   };
 
