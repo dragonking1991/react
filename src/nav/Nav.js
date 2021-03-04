@@ -9,7 +9,6 @@ import {
   useLocation
 } from "react-router-dom";
 
-
 export default function AuthExample() {
   return (
     <ProvideAuth>

@@ -1,5 +1,5 @@
 import React from 'react';
-import './Mock.css';
+import './Board.css';
 
 class FormCtrl extends React.Component {
   constructor(props) {
@@ -106,7 +106,7 @@ class List extends React.Component {
   }
 }
 
-class Mock extends React.Component {
+class Board extends React.Component {
   constructor(props) {
     super(props)
     this.filterText = this.filterText.bind(this)
@@ -132,4 +132,4 @@ class Mock extends React.Component {
   }
 }
 
-export default Mock;
+export default Board;
