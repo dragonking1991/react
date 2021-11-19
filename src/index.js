@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './app/App';
-import Hello from './hello/Hello';
+import App from './dateTime/App';
+import Hello from './helloName/Hello';
 import Exchange from './exchange/Exchange';
-import Board from './board/Board';
-import Nav from './nav/Nav';
+import Board from './boardTable/Board';
+import Nav from './navRoute/Nav';
 import * as serviceWorker from './serviceWorker';
+
+
+import store from './store.js'
+import { Provider } from 'react-redux'
 
 const DATAS = [
   { category: "Sporting Goods", price: "$49.99", stocked: true, name: "Football" },
@@ -19,18 +23,23 @@ const DATAS = [
 
 ReactDOM.render(
   <React.StrictMode>
-    -----------------------------------------------------------------------------
-    <App />
-    -----------------------------------------------------------------------------
-    <Board data={DATAS} />
-    -----------------------------------------------------------------------------
-    <Exchange />
-    -----------------------------------------------------------------------------
-    <Hello />
-    -----------------------------------------------------------------------------
-    <Nav />
-    -----------------------------------------------------------------------------
+
+    <Provider store={store}>
+      -----------------------------------------------------------------------------
+      <App />
+      -----------------------------------------------------------------------------
+      <Board data={DATAS} />
+      -----------------------------------------------------------------------------
+      <Exchange />
+      -----------------------------------------------------------------------------
+      <Hello />
+      -----------------------------------------------------------------------------
+      <Nav />
+      -----------------------------------------------------------------------------
+    </Provider>
+
   </React.StrictMode>,
+
   document.getElementById('root')
 );
 

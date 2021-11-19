@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import axios from 'axios';
 
 const App = () => {
-  const [date,setDate] = useState(new Date())
-  
+  const [date, setDate] = useState(new Date())
+
   useEffect(() => {
     const timer = setInterval(() => {
       setDate(new Date())
@@ -13,25 +12,13 @@ const App = () => {
       clearInterval(timer)
     }
   })
-  
+
   return (
     <p>
       {date.toLocaleTimeString()}
     </p>
   )
 }
-
-const getData = () => {
-  axios.get('manifest.json')
-  .then(res => {
-    console.log(res);
-  })
-  .catch(err => {
-    console.log(err);
-  })
-}
-
-getData()
 
 export default App;
 
