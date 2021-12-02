@@ -6,6 +6,7 @@
     "@reduxjs/toolkit": "^1.6.2",
     "axios": "^0.24.0",
     "cra-template": "1.0.3",
+    "firebase": "^9.5.0",
     "mkcert": "^1.4.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
