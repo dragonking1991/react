@@ -8,7 +8,7 @@ export default function ChatRoom() {
     <div>
       <Row>
         <Col span={6}><SideBar /></Col>
-        <Col span={24}><ChatWindow /></Col>
+        <Col span={18}><ChatWindow /></Col>
       </Row>
     </div>
   )

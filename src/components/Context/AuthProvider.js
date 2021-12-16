@@ -21,13 +21,13 @@ export default function AuthProvider({ children }) {
         });
 
         setLoading(false);
-
+        
         history.push('/');
+        return;
       }
-      else {
-        history.push('/login');
-      }
-
+      
+      setLoading(false);
+      history.push('/login');
     });
 
     //clean function
@@ -38,7 +38,7 @@ export default function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider value={{ user }}>
-      { loading ? <Spin /> : children }
+      {loading ? <Spin /> : children}
     </AuthContext.Provider>
   )
 }
