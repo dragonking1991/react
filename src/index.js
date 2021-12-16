@@ -7,10 +7,13 @@ import Exchange from './exchange/Exchange';
 import Board from './boardTable/Board';
 import Nav from './navRoute/Nav';
 import * as serviceWorker from './serviceWorker';
-
-
 import store from './store.js'
 import { Provider } from 'react-redux'
+import Login from './components/Login';
+import ChatRoom from './components/ChatRoom';
+import { Route, Switch, BrowserRouter } from 'react-router-dom';
+
+import AuthProvider from './components/Context/AuthProvider';
 
 const DATAS = [
   { category: "Sporting Goods", price: "$49.99", stocked: true, name: "Football" },
@@ -21,10 +24,23 @@ const DATAS = [
   { category: "Electronics", price: "$199.99", stocked: true, name: "Nexus 7" }
 ]
 
+
+
 ReactDOM.render(
   <React.StrictMode>
 
+    <BrowserRouter>
+      <AuthProvider>
+        <Switch>
+          <Route component={Login} path="/login" />
+          <Route component={ChatRoom} path="/" />
+        </Switch>
+      </AuthProvider>
+    </BrowserRouter>
+    {/* <Login /> */}
+
     <Provider store={store}>
+
       -----------------------------------------------------------------------------
       <App />
       -----------------------------------------------------------------------------

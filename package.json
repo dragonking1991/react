@@ -3,20 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
     "@reduxjs/toolkit": "^1.6.2",
+    "antd": "^4.17.3",
     "axios": "^0.24.0",
     "cra-template": "1.0.3",
+    "date-fns": "^2.27.0",
     "firebase": "^9.5.0",
-    "mkcert": "^1.4.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.6",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
-    "react-spring": "^8.0.27"
+    "react-spring": "^8.0.27",
+    "styled-components": "^5.3.3"
   },
   "scripts": {
-    "start": "set HTTPS=true && react-scripts start",
+    "start": "set HTTPS=true&&set SSL_CRT_FILE=./.cert/cert.pem SSL_KEY_FILE=./.cert/key.pem&&react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
