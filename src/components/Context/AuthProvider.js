@@ -12,7 +12,7 @@ export default function AuthProvider({ children }) {
 
   React.useEffect(() => {
     const unsubcribed = auth.onAuthStateChanged((user) => {
-      console.log({ user });
+      // console.log({ user });
 
       if (user) {
         const { displayName, email, uid, photoURL } = user;
@@ -21,11 +21,11 @@ export default function AuthProvider({ children }) {
         });
 
         setLoading(false);
-        
+
         history.push('/');
         return;
       }
-      
+
       setLoading(false);
       history.push('/login');
     });
