@@ -12,12 +12,16 @@ export default function AuthProvider({ children }) {
 
   React.useEffect(() => {
     const unsubcribed = auth.onAuthStateChanged((user) => {
-      // console.log({ user });
+      console.log({ user });
 
       if (user) {
         const { displayName, email, uid, photoURL } = user;
+
         setUser({
-          displayName, email, uid, photoURL
+          displayName,
+          email,
+          uid,
+          photoURL
         });
 
         setLoading(false);

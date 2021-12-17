@@ -4,14 +4,20 @@ import { db } from '../firebase/config'
 const useFilestore = (collection, condition) => {
 
   const [documents, setDocuments] = useState([])
+
   React.useEffect(() => {
     let collectionRef = db.collection(collection).orderBy('createdAt')
 
     if (condition) {
-      if (!condition.compareValue) {
+      if (!condition.compareValue || condition.compareValue.length) {
         return
       }
-      collectionRef = collectionRef.where(condition.fieldName, condition.opperator, condition.compareValue)
+
+      collectionRef = collectionRef.where(
+        condition.fieldName,
+        condition.operator,
+        condition.compareValue
+      )
     }
 
     const unsubcribe = collectionRef.onSnapshot(snapshot => {

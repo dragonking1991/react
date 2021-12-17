@@ -37,10 +37,11 @@ export default function RoomList() {
       operator: 'array-contains',
       compareValue: uid
     }
-  }, [uid])
+  }, [uid]);
 
-  const rooms = useFilestore('rooms', roomsCondition)
-  console.log({ rooms })
+  const roomsFull = useFilestore('rooms');
+  const rooms = useFilestore('rooms', roomsCondition);
+  console.log({roomsFull, rooms,roomsCondition, uid })
 
   return (
     <div>
