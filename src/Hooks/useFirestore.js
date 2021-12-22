@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { db } from '../firebase/config'
 
-const useFilestore = (collection, condition) => {
+const useFirestore = (collection, condition) => {
 
   const [documents, setDocuments] = useState([])
 
@@ -37,4 +37,4 @@ const useFilestore = (collection, condition) => {
   return documents
 }
 
-export default useFilestore
+export default useFirestore

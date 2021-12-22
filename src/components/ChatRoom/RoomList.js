@@ -3,7 +3,7 @@ import { Button, Collapse, Typography } from 'antd'
 import CollapsePanel from 'antd/lib/collapse/CollapsePanel'
 import React from 'react'
 import styled from 'styled-components'
-import useFilestore from '../../Hooks/useFilestore';
+import useFirestore from '../../Hooks/useFirestore';
 import { AuthContext } from '../Context/AuthProvider';
 
 const PanelStyled = styled(CollapsePanel)`
@@ -39,8 +39,8 @@ export default function RoomList() {
     }
   }, [uid]);
 
-  const roomsFull = useFilestore('rooms');
-  const rooms = useFilestore('rooms', roomsCondition);
+  const roomsFull = useFirestore('rooms');
+  const rooms = useFirestore('rooms', roomsCondition);
   console.log({roomsFull, rooms,roomsCondition, uid })
 
   return (
