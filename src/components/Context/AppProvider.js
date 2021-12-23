@@ -8,6 +8,7 @@ export const AppContext = React.createContext();
 export default function AppProvider({ children }) {
 
   const [isAddRoomVisible, setIsAddRoomVisible] = React.useState(false)
+  const [isInviteMemberVisible, setIsInviteMemberVisible] = React.useState(false)
   const [selectedRoomId, setselectedRoomId] = React.useState('')
 
   const {
@@ -41,7 +42,17 @@ export default function AppProvider({ children }) {
   console.log({ members });
 
   return (
-    <AppContext.Provider value={{ rooms, members, isAddRoomVisible, setIsAddRoomVisible, selectedRoomId, setselectedRoomId, selectedRoom }}>
+    <AppContext.Provider value={{
+      rooms,
+      members,
+      isAddRoomVisible,
+      setIsAddRoomVisible,
+      selectedRoomId,
+      setselectedRoomId,
+      isInviteMemberVisible,
+      setIsInviteMemberVisible,
+      selectedRoom
+    }}>
       {children}
     </AppContext.Provider>
   )
