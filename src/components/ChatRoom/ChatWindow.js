@@ -2,6 +2,7 @@ import { UserAddOutlined } from '@ant-design/icons/lib/icons'
 import { Button, Input, Tooltip, Avatar, Form } from 'antd'
 import React from 'react'
 import styled from 'styled-components'
+import { AppContext } from '../Context/AppProvider';
 import Message from './Message';
 
 const WarpperStyle = styled.div`
@@ -64,30 +65,27 @@ const FormStyled = styled(Form)`
 `
 
 export default function ChatWindow() {
+  const { selectedRoom, members } = React.useContext(AppContext)
+
   return (
     <div>
       <WarpperStyle>
         <HeaderStyled>
           <div className='header__info'>
-            <p className='header__title'>Room 1</p>
-            <span className='header__description'>This is room  1</span>
+            <p className='header__title'>{selectedRoom && selectedRoom.name}</p>
+            <span className='header__description'>{selectedRoom && selectedRoom.description}</span>
           </div>
 
           <ButtonGroupStyled>
             <Button icon={<UserAddOutlined />} type='text'>Invite</Button>
             <Avatar.Group size='small' maxCount={2}>
-              <Tooltip title="A">
-                <Avatar>A</Avatar>
-              </Tooltip>
-              <Tooltip title="B">
-                <Avatar>B</Avatar>
-              </Tooltip>
-              <Tooltip title="C">
-                <Avatar>C</Avatar>
-              </Tooltip>
-              <Tooltip title="D">
-                <Avatar>D</Avatar>
-              </Tooltip>
+              {
+                members.map(member =>
+                  <Tooltip title={member.displayName} key={member.id}>
+                    <Avatar src={member.photoURL}>{member.photoURL ? '' : member.displayName?.charAt(0)?.toUpperCase()}</Avatar>
+                  </Tooltip>
+                )
+              }
             </Avatar.Group>
           </ButtonGroupStyled>
 

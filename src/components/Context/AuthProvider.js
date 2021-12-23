@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useHistory } from 'react-router-dom';
 import { auth } from '../../firebase/config'
 import { Spin } from 'antd';
@@ -6,13 +6,12 @@ import { Spin } from 'antd';
 export const AuthContext = React.createContext();
 
 export default function AuthProvider({ children }) {
-  const [user, setUser] = useState({});
-  const [loading, setLoading] = useState(true);
+  const [user, setUser] = React.useState({});
+  const [loading, setLoading] = React.useState(true);
   const history = useHistory();
 
   React.useEffect(() => {
     const unsubcribed = auth.onAuthStateChanged((user) => {
-      console.log({ user });
 
       if (user) {
         const { displayName, email, uid, photoURL } = user;

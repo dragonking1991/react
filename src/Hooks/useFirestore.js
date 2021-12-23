@@ -7,13 +7,11 @@ const useFirestore = (collection, condition) => {
 
   React.useEffect(() => {
     let collectionRef = db.collection(collection).orderBy('createdAt')
-    console.log({condition});
+
     if (condition) {
       if (!condition.compareValue || !condition.compareValue.length) {
         return
       }
-
-      
 
       collectionRef = collectionRef.where(
         condition.fieldName,
@@ -28,8 +26,6 @@ const useFirestore = (collection, condition) => {
         ...doc.data(),
         id: doc.id
       }))
-
-      console.log({documents})
 
       setDocuments(documents)
     })
