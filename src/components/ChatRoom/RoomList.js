@@ -1,10 +1,10 @@
-import { PlusSquareOutlined } from '@ant-design/icons/lib/icons';
+import { PlusSquareOutlined } from '@ant-design/icons/lib/icons'
 import { Button, Collapse, Typography } from 'antd'
 import CollapsePanel from 'antd/lib/collapse/CollapsePanel'
 import React from 'react'
 import styled from 'styled-components'
-import useFirestore from '../../Hooks/useFirestore';
-import { AuthContext } from '../Context/AuthProvider';
+import useFirestore from '../../Hooks/useFirestore'
+import { AuthContext } from '../Context/AuthProvider'
 
 const PanelStyled = styled(CollapsePanel)`
   &&& {
@@ -20,13 +20,13 @@ const PanelStyled = styled(CollapsePanel)`
       padding: 0;
     }
   }
-`;
+`
 
 const LinkStyled = styled(Typography.Link)`
   display: block;
   margin-bottom:5px;
   color: white;
-`;
+`
 
 export default function RoomList() {
   const { user: { uid } } = React.useContext(AuthContext)
@@ -37,11 +37,9 @@ export default function RoomList() {
       operator: 'array-contains',
       compareValue: uid
     }
-  }, [uid]);
+  }, [uid])
 
-  const roomsFull = useFirestore('rooms');
-  const rooms = useFirestore('rooms', roomsCondition);
-  console.log({roomsFull, rooms,roomsCondition, uid })
+  const rooms = useFirestore('rooms', roomsCondition)
 
   return (
     <div>
