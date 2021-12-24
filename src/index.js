@@ -16,6 +16,7 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import AuthProvider from './components/Context/AuthProvider';
 import AppProvider from './components/Context/AppProvider';
 import AddRoomModal from './components/Modals/AddRoomModal';
+import InviteMemberModal from './components/Modals/InviteMemberModal';
 
 const DATAS = [
   { category: "Sporting Goods", price: "$49.99", stocked: true, name: "Football" },
@@ -29,8 +30,7 @@ const DATAS = [
 
 
 ReactDOM.render(
-  <React.StrictMode>
-
+  <>
     <BrowserRouter>
       <AuthProvider>
         <AppProvider>
@@ -39,6 +39,7 @@ ReactDOM.render(
             <Route component={ChatRoom} path="/" />
           </Switch>
           <AddRoomModal />
+          <InviteMemberModal />
         </AppProvider>
       </AuthProvider>
     </BrowserRouter>
@@ -59,7 +60,7 @@ ReactDOM.render(
       -----------------------------------------------------------------------------
     </Provider>
 
-  </React.StrictMode>,
+  </>,
 
   document.getElementById('root')
 );
